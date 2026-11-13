@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PayPay Senior Engineer — Interview Flashcards</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">P</span>
+      <div>
+        <h1>Interview Flashcards</h1>
+        <p class="subtitle">Senior Engineer · PayPay</p>
+      </div>
+    </div>
+    <nav class="tabs">
+      <button class="tab active" data-view="study">Study</button>
+      <button class="tab" data-view="browse">Browse</button>
+      <button class="tab" data-view="manage">Manage</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- STUDY -->
+    <section id="view-study" class="view active">
+      <div class="panel" id="setup">
+        <div class="panel-head">
+          <h2>Themes</h2>
+          <div class="row">
+            <button class="ghost small" id="select-all">All</button>
+            <button class="ghost small" id="select-none">None</button>
+          </div>
+        </div>
+        <div id="deck-chips" class="chips"></div>
+        <div class="row options">
+          <label><input type="checkbox" id="opt-due" checked /> Due cards only</label>
+          <label><input type="checkbox" id="opt-shuffle" checked /> Shuffle</label>
+          <button class="primary" id="start">Start session</button>
+        </div>
+      </div>
+
+      <div id="session" class="hidden">
+        <div class="progress"><div id="progress-bar"></div></div>
+        <div class="session-meta">
+          <span id="session-count"></span>
+          <span id="session-deck" class="pill"></span>
+        </div>
+        <div id="card" class="card" tabindex="0">
+          <div class="card-face front">
+            <div class="label">Question</div>
+            <div id="card-q" class="content"></div>
+            <div class="hint">Answer out loud first, then press <kbd>Space</kbd> to reveal</div>
+          </div>
+          <div class="card-face back hidden">
+            <div class="label">Answer</div>
+            <div id="card-a" class="content"></div>
+          </div>
+        </div>
+        <div class="row grade hidden" id="grade">
+          <button class="again" data-grade="again">Again <kbd>1</kbd></button>
+          <button class="hard" data-grade="hard">Hard <kbd>2</kbd></button>
+          <button class="good" data-grade="good">Good <kbd>3</kbd></button>
+        </div>
+        <div class="row center">
+          <button class="ghost" id="reveal">Reveal <kbd>Space</kbd></button>
+          <button class="ghost" id="stop">End session</button>
+        </div>
+      </div>
+
+      <div id="done" class="panel hidden center-text">
+        <h2>Session complete 🎉</h2>
+        <p id="done-summary"></p>
+      </div>
+    </section>
+
+    <!-- BROWSE -->
+    <section id="view-browse" class="view">
+      <div class="panel">
+        <div class="row">
+          <select id="browse-deck"></select>
+          <input id="browse-search" type="search" placeholder="Search questions & answers…" />
+        </div>
+      </div>
+      <div id="browse-list"></div>
+    </section>
+
+    <!-- MANAGE -->
+    <section id="view-manage" class="view">
+      <div class="panel">
+        <h2>Add a theme</h2>
+        <form id="form-deck" class="form">
+          <input name="title" placeholder="Theme name (e.g. Repo A architecture)" required />
+          <input name="description" placeholder="Short description (optional)" />
+          <button class="primary">Add theme</button>
+        </form>
+      </div>
+      <div class="panel">
+        <h2>Add a card</h2>
+        <form id="form-card" class="form">
+          <select name="deck" id="card-deck" required></select>
+          <textarea name="q" rows="2" placeholder="Question" required></textarea>
+          <textarea name="a" rows="6" placeholder="Answer — supports `inline code`, **bold**, - bullet lists and ``` code blocks ```" required></textarea>
+          <button class="primary">Add card</button>
+        </form>
+      </div>
+      <div class="panel">
+        <h2>Backup &amp; sync</h2>
+        <p class="muted">Themes and cards you add here live in this browser. Export them to back them up or move them to another device.</p>
+        <div class="row">
+          <button id="export">Export JSON</button>
+          <label class="button">Import JSON<input type="file" id="import" accept="application/json" hidden /></label>
+          <button class="danger" id="reset-progress">Reset progress</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app-registry.js"></script>
+  <script src="decks/javascript.js"></script>
+  <script src="decks/react.js"></script>
+  <script src="decks/system-design.js"></script>
+  <script src="decks/frontend-architecture.js"></script>
+  <script src="decks/payments-domain.js"></script>
+  <script src="decks/experience-behavioral.js"></script>
+  <script src="decks/repo-architecture.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
